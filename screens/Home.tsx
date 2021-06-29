@@ -8,7 +8,9 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <View style={styles.separator}/>
-      <EditScreenInfo />
+      <Text>
+        Budget Calculator
+      </Text>
       <View style={styles.separator}  />
     </View>
   );
