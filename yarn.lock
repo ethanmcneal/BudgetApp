@@ -4560,7 +4560,7 @@ inquirer@^3.0.6:
     strip-ansi "^4.0.0"
     through "^2.3.6"
 
-invariant@^2.2.2, invariant@^2.2.4:
+invariant@>=2, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -7058,6 +7058,13 @@ react-navigation-drawer@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/react-navigation-drawer/-/react-navigation-drawer-2.7.1.tgz#b025be11f612e8215f15f9f605851d281606fe82"
   integrity sha512-W36XDl+Ts5uGNr6Ryt1xGrQ5JTeddPmvR31bNX7o6Oo7OsdPZ3b1+oMDoRClGca0d6Ggo7btIqiWUsUshm+p/g==
+
+react-navigation-header-buttons@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/react-navigation-header-buttons/-/react-navigation-header-buttons-7.0.1.tgz#298cba26aa27d9695e1f450e7eb3a175c0c3d2ed"
+  integrity sha512-ggIXhshnRv3Kaqw1ZlZLqMPtBOsLY4FLxxEOCHKe/XuWVfZGPmMqZBC/S4H8cQgIGRyFNOrypXF69Hb7fXMWNg==
+  dependencies:
+    invariant ">=2"
 
 react-navigation-stack@^2.10.4:
   version "2.10.4"

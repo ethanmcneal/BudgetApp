@@ -6,6 +6,8 @@ import Home from "../screens/Home";
 import MyComponents from "../screens/MyComponents";
 import SquareCardInfo from "../components/myComponents/componentInfo/SquareCardInfo";
 import CenterViewInfo from "../components/myComponents/componentInfo/CenterViewInfo";
+import BudgetFormScreen from "../screens/FormScreens/BudgetFormScreen";
+import ResultsScreen from "../screens/FormScreens/ResultsScreen";
 
 
 const ComponentNavigator = createStackNavigator({
@@ -16,6 +18,8 @@ const ComponentNavigator = createStackNavigator({
 
 const HomeNavigator = createStackNavigator({
     Home: Home,
+    'Budget Form': BudgetFormScreen,
+    Results: ResultsScreen
 })
 
 const MainNavigator = createDrawerNavigator({
