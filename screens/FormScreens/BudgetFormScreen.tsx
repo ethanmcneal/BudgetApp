@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import CenterView from '../../components/myComponents/CenterView'
 
 
@@ -29,6 +29,7 @@ const BudgetFormScreen = (props :any) => {
             <View style={styles.input}>
                 <TextInput />
             </View>
+            <Button onPress={() => {props.navigation.navigate('Results')}} title='Submit'/>
             </View>
         </ScrollView>
     )
