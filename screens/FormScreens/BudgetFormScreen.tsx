@@ -15,8 +15,8 @@ const BudgetFormScreen = (props: any) => {
 	const [expenses, setExpenses] = useState({house: '', utilities: '', car: '', food: '', leisure: '', other: '', });
 	const [counter, setCounter] = useState(0)
 
-	const handleChange = (e :any) => {
-		console.log(e.target.text)
+	const handleChange = (e :any, category :string) => {
+		setExpenses({...expenses, [category]: e})
 	}
 	return (
 		<ScrollView>
@@ -42,7 +42,7 @@ const BudgetFormScreen = (props: any) => {
 					style={styles.field}
                     placeholder=''
                     value={expenses.house}
-					onChange={(e) => handleChange(e)} 
+					onChangeText={(text) => handleChange(text, 'house')} 
                     />
                     </View>
 				</View>}
@@ -53,7 +53,9 @@ const BudgetFormScreen = (props: any) => {
 					<TextInput
 					style={styles.field}
                     placeholder=''
-                    value={expenses.utilities} 
+                    value={expenses.utilities}
+					onChangeText={(text) => handleChange(text, 'utilities')} 
+ 
                     />
                     </View>
 				</View>}
@@ -65,6 +67,8 @@ const BudgetFormScreen = (props: any) => {
 					style={styles.field}
                     placeholder=''
                     value={expenses.car} 
+					onChangeText={(text) => handleChange(text, 'car')} 
+
                     />
                     </View>
 				</View>}
@@ -76,23 +80,27 @@ const BudgetFormScreen = (props: any) => {
 					style={styles.field}
                     placeholder=''
                     value={expenses.food} 
+					onChangeText={(text) => handleChange(text, 'food')} 
+
                     />
                     </View>
 					
 				</View>}
-	{counter === 4 && <View style={styles.inputContainer}>
+	{counter === 5 && <View style={styles.inputContainer}>
 					<Ionicons iconName={'ios-money'} size={22}/>
                     <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
                     <View style={styles.input}>
 					<TextInput
 					style={styles.field}
                     placeholder=''
-                    value={expenses.leisure} 
+                    value={expenses.leisure}
+					onChangeText={(text) => handleChange(text, 'leisure')} 
+ 
                     />
                     </View>
 					
 				</View>}
-	{counter === 4 && <View style={styles.inputContainer}>
+	{counter === 6 && <View style={styles.inputContainer}>
 					<Ionicons iconName={'ios-money'} size={22}/>
                     <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
                     <View style={styles.input}>
@@ -111,7 +119,7 @@ const BudgetFormScreen = (props: any) => {
 					}}
 					title="Back"
 				/>}
-				{counter < 4 && <Button
+				{counter < 6 && <Button
 					onPress={() => {
 						setCounter(prev => prev + 1);
 					}}
