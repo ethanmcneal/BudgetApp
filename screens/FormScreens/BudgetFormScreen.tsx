@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
 	Button,
@@ -7,48 +8,79 @@ import {
 	TextInput,
 	View,
 } from "react-native";
-import CenterView from "../../components/myComponents/CenterView";
 
 const BudgetFormScreen = (props: any) => {
 	const [income, setIncome] = useState('');
-	const [expenses, setExpenses] = useState([]);
-
+	const [expenses, setExpenses] = useState({house: '', utilities: '', car: '', food: '', leisure: '', otherPayments: '', });
+	const [counter, setCounter] = useState(0)
 	return (
 		<ScrollView>
 			<View style={styles.screen}>
-				<Text>Form screen</Text>
-				<View style={styles.inputContainer}>
-                    <Text style={styles.inputPrompt}>How many Sources of Income do you have?</Text>
+				<Text>{counter}</Text>
+	{counter === 0 && <View style={styles.inputContainer}>
+					<Ionicons iconName={'ios-money'} size={22}/>
+                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
                     <View style={styles.input}>
 					<TextInput
                     placeholder=''
                     value={income} 
                     />
                     </View>
-				</View>
-				<View style={styles.inputContainer}>
-				</View>
-				<View style={styles.input}>
-					<TextInput />
-				</View>
-				<View style={styles.input}>
-					<TextInput />
-				</View>
-				<View style={styles.input}>
-					<TextInput />
-				</View>
-				<View style={styles.input}>
-					<TextInput />
-				</View>
-				<View style={styles.input}>
-					<TextInput />
-				</View>
-				<Button
+				</View>}
+	{counter === 1 && <View style={styles.inputContainer}>
+					<Ionicons iconName={'ios-home'} size={22}/>
+                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
+                    <View style={styles.input}>
+					<TextInput
+                    placeholder=''
+                    value={income} 
+                    />
+                    </View>
+				</View>}
+	{counter === 2 && <View style={styles.inputContainer}>
+					<Ionicons iconName={'ios-money'} size={22}/>
+                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
+                    <View style={styles.input}>
+					<TextInput
+                    placeholder=''
+                    value={income} 
+                    />
+                    </View>
+				</View>}
+	{counter === 3 && <View style={styles.inputContainer}>
+					<Ionicons iconName={'ios-money'} size={22}/>
+                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
+                    <View style={styles.input}>
+					<TextInput
+                    placeholder=''
+                    value={income} 
+                    />
+                    </View>
+				</View>}
+	{counter === 4 && <View style={styles.inputContainer}>
+					<Ionicons iconName={'ios-money'} size={22}/>
+                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
+                    <View style={styles.input}>
+					<TextInput
+                    placeholder=''
+                    value={income} 
+                    />
+                    </View>
+				</View>}
+				<View style={styles.buttonContainer}>
+				{counter > 0 && <Button
 					onPress={() => {
-						props.navigation.navigate("Results");
+						setCounter(prev => prev - 1);
 					}}
-					title="Submit"
-				/>
+					title="Back"
+				/>}
+				{counter < 4 && <Button
+					onPress={() => {
+						setCounter(prev => prev + 1);
+					}}
+					title="Next"
+				/>}
+				</View>
 			</View>
 		</ScrollView>
 	);
@@ -58,20 +90,25 @@ const styles = StyleSheet.create({
 	screen: {
 		flex: 1,
 		alignItems: "center",
+		justifyContent: 'center',
 	},
     inputContainer: {
         alignItems: 'center',
     },
     inputPrompt: {
-        width: '70%'
+		fontSize: 22
     },
 	input: {
 		width: "60%",
 		marginVertical: 20,
-		borderBottomWidth: 1,
-		borderBottomColor: "#ccc",
+		borderWidth: 2,
+		borderColor: "#ccc",
 	},
 	form: {},
+	buttonContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-evenly'
+	},
 });
 
 export default BudgetFormScreen;
