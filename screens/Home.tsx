@@ -23,7 +23,7 @@ export default function Home(props :any) {
 
 Home.navigationOptions = (navData :any) => {
 	return{
-	headerTitle: "Your Orders",
+	headerTitle: "Home",
 	headerLeft: () => { 
 		return (<HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
 			<Item title='Menu' iconName={'ios-menu'} onPress={() => {

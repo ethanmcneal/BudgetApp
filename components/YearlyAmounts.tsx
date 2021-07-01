@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View } from 'react-native'
 
 const YearlyAmounts = (props :any) => {
@@ -8,23 +8,27 @@ const YearlyAmounts = (props :any) => {
      // n = compounding periods
      const getTotalWithInterest = (interestRate :number, numOfYears :number) => {
         //interest rate should be passed as a percentage decimal
+        console.log(interestRate)
         // 5% => 0.05
         let interestPercentage = (Math.pow((1 + interestRate), numOfYears) - 1);
         let yearlyInterest =  (props.leftover * interestPercentage)
-        return ((props.leftover * numOfYears) + (yearlyInterest * numOfYears))
+        return ((props.leftover * 12) + (yearlyInterest * numOfYears))
     }
-    const yearlyAmounts = {oneYear: getTotalWithInterest(parseInt(`0.${props.interest}`), 1),
-     twoYears: getTotalWithInterest(parseInt(`0.${props.interest}`), 2),
-     fiveYears: getTotalWithInterest(parseInt(`0.${props.interest}`), 5),
-     tenYears: getTotalWithInterest(parseInt(`0.${props.interest}`), 10),
-     twentyYears: getTotalWithInterest(parseInt(`0.${props.interest}`), 20)}
+    useEffect(() => {
+
+    },[props.interest])
+    const yearlyAmounts = {oneYear: getTotalWithInterest(parseFloat(`0.${props.interest}`), 1),
+     twoYears: getTotalWithInterest(parseFloat(`0.${props.interest}`), 2),
+     fiveYears: getTotalWithInterest(parseFloat(`0.${props.interest}`), 5),
+     tenYears: getTotalWithInterest(parseFloat(`0.${props.interest}`), 10),
+     twentyYears: getTotalWithInterest(parseFloat(`0.${props.interest}`), 20)}
         return (
             <View>
-            <Text>${yearlyAmounts.oneYear} in one year</Text>
-            <Text>${yearlyAmounts.twoYears} in two years</Text>
-            <Text>${yearlyAmounts.fiveYears} in five years</Text>
-            <Text>${yearlyAmounts.tenYears} in ten years</Text>
-            <Text>${yearlyAmounts.twentyYears} in twenty years</Text>
+            <Text>${yearlyAmounts.oneYear.toFixed(2)} in one year</Text>
+            <Text>${yearlyAmounts.twoYears.toFixed(2)} in two years</Text>
+            <Text>${yearlyAmounts.fiveYears.toFixed(2)} in five years</Text>
+            <Text>${yearlyAmounts.tenYears.toFixed(2)} in ten years</Text>
+            <Text>${yearlyAmounts.twentyYears.toFixed(2)} in twenty years</Text>
             </View>
         )
 }

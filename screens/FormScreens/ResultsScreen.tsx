@@ -9,10 +9,7 @@ const ResultsScreen = (props :any) => {
     const totalExpenses = props.navigation.getParam('expenses')
     const totalIncome = props.navigation.getParam('income')
     const leftover = totalIncome - totalExpenses
-    const [interest, setInterest] = useState('0')
-
-     
-
+    const [interest, setInterest] = useState('6')
     return (
         <CenterView>
             <Text>{totalExpenses}</Text>
@@ -21,12 +18,13 @@ const ResultsScreen = (props :any) => {
             <Text>if you save {leftover} for one year and
                 invest that at <View style={styles.input}>
                     <TextInput
+                    keyboardType='numeric'
                     value={interest}
                     onChangeText={(text) => setInterest(text)} 
                 /><Text>%</Text>
                 </View> interest each compounded annually</Text>
                 <YearlyAmounts leftover={leftover} interest={interest} />
-                <Button title='Calculate!' onPress={() => YearlyAmounts(interest)}/>
+                {/* <Button title='Calculate!' onPress={() => YearlyAmounts(interest)}/> */}
         </CenterView>
     )
 }
