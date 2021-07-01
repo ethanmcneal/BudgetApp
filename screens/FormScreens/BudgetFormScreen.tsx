@@ -27,7 +27,7 @@ const BudgetFormScreen = (props: any) => {
 		setExpenses({ ...expenses, [category]: replacedText });
 	};
 	const handleIncomeChange = (text: any) => {
-		let replacedText = text.match(/^[0-9]*$/) ? text : ''
+		let replacedText = text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '')
 		setIncome(replacedText);
 	};
 	return (
@@ -66,6 +66,7 @@ const BudgetFormScreen = (props: any) => {
 								onChangeText={(text) =>
 									handleChange(text, "house")
 								}
+								keyboardType={'numbers-and-punctuation'}
 							/>
 						</View>
 					</View>
@@ -84,6 +85,7 @@ const BudgetFormScreen = (props: any) => {
 								onChangeText={(text) =>
 									handleChange(text, "utilities")
 								}
+								keyboardType={'numbers-and-punctuation'}
 							/>
 						</View>
 					</View>
@@ -106,6 +108,7 @@ const BudgetFormScreen = (props: any) => {
 								onChangeText={(text) =>
 									handleChange(text, "car")
 								}
+								keyboardType={'numbers-and-punctuation'}
 							/>
 						</View>
 					</View>
@@ -124,6 +127,7 @@ const BudgetFormScreen = (props: any) => {
 								onChangeText={(text) =>
 									handleChange(text, "food")
 								}
+								keyboardType={'numbers-and-punctuation'}
 							/>
 						</View>
 					</View>
@@ -142,6 +146,7 @@ const BudgetFormScreen = (props: any) => {
 								onChangeText={(text) =>
 									handleChange(text, "leisure")
 								}
+								keyboardType={'numbers-and-punctuation'}
 							/>
 						</View>
 					</View>
@@ -160,6 +165,7 @@ const BudgetFormScreen = (props: any) => {
 								onChangeText={(text) =>
 									handleChange(text, "other")
 								}
+								keyboardType={'numbers-and-punctuation'}
 							/>
 						</View>
 					</View>
