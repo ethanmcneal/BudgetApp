@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import CenterView from '../../components/myComponents/CenterView'
 
 
@@ -21,7 +21,22 @@ const ResultsScreen = (props :any) => {
         let yearlyInterest =  (leftover * interestPercentage)
         return ((leftover * numOfYears) + (yearlyInterest * numOfYears))
     }
-    const twentyYears = getTotalWithInterest(0, 20)
+    const YearlyAmounts = (int :any) => {
+    const yearlyAmounts = {oneYear: getTotalWithInterest(parseInt(`0.${int}`), 1),
+     twoYears: getTotalWithInterest(parseInt(`0.${int}`), 2),
+     fiveYears: getTotalWithInterest(parseInt(`0.${int}`), 5),
+     tenYears: getTotalWithInterest(parseInt(`0.${int}`), 10),
+     twentyYears: getTotalWithInterest(parseInt(`0.${int}`), 20)}
+        return (
+            <View>
+            <Text>${yearlyAmounts.oneYear} in one year</Text>
+            <Text>${yearlyAmounts.twoYears} in two years</Text>
+            <Text>${yearlyAmounts.fiveYears} in five years</Text>
+            <Text>${yearlyAmounts.tenYears} in ten years</Text>
+            <Text>${yearlyAmounts.twentyYears} in twenty years</Text>
+            </View>
+        )
+}
     return (
         <CenterView>
             <Text>{totalExpenses}</Text>
@@ -30,15 +45,12 @@ const ResultsScreen = (props :any) => {
             <Text>if you save {leftover} for one year and
                 invest that at <View style={styles.input}>
                     <TextInput
-                    value={interest} 
+                    value={interest}
+                    onChangeText={(text) => setInterest(text)} 
                 /><Text>%</Text>
                 </View> interest each compounded annually</Text>
-            <Text>_ in one year</Text>
-            <Text>_ in two years</Text>
-            <Text>_ in five years</Text>
-            <Text>_ in ten years</Text>
-            <Text>{twentyYears} in twenty years</Text>
-
+                <YearlyAmounts />
+                <Button title='Calculate!' onPress={() => YearlyAmounts(interest)}/>
         </CenterView>
     )
 }
