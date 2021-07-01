@@ -22,8 +22,9 @@ const BudgetFormScreen = (props: any) => {
 	});
 	const [counter, setCounter] = useState(0);
 
-	const handleChange = (e: any, category: string) => {
-		setExpenses({ ...expenses, [category]: e });
+	const handleChange = (text: any, category: string) => {
+		text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '')
+		setExpenses({ ...expenses, [category]: text });
 	};
 	return (
 		<ScrollView>
@@ -41,6 +42,7 @@ const BudgetFormScreen = (props: any) => {
 								placeholder=""
 								value={income}
 								onChangeText={(text) => setIncome(text)}
+								keyboardType={'numeric'}
 							/>
 						</View>
 					</View>
