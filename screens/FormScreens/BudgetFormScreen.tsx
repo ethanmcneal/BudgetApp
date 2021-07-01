@@ -23,8 +23,12 @@ const BudgetFormScreen = (props: any) => {
 	const [counter, setCounter] = useState(0);
 
 	const handleChange = (text: any, category: string) => {
-		text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '')
-		setExpenses({ ...expenses, [category]: text });
+		let replacedText = text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '')
+		setExpenses({ ...expenses, [category]: replacedText });
+	};
+	const handleIncomeChange = (text: any) => {
+		let replacedText = text.match(/^[0-9]*$/) ? text : ''
+		setIncome(replacedText);
 	};
 	return (
 		<ScrollView>
@@ -41,8 +45,8 @@ const BudgetFormScreen = (props: any) => {
 								style={styles.field}
 								placeholder=""
 								value={income}
-								onChangeText={(text) => setIncome(text)}
-								keyboardType={'numeric'}
+								onChangeText={(text) => handleIncomeChange(text)}
+								keyboardType={'numbers-and-punctuation'}
 							/>
 						</View>
 					</View>
