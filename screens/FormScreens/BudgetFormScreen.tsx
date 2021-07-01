@@ -11,120 +11,177 @@ import {
 import Colors from "../../constants/Colors";
 
 const BudgetFormScreen = (props: any) => {
-	const [income, setIncome] = useState('');
-	const [expenses, setExpenses] = useState({house: '', utilities: '', car: '', food: '', leisure: '', other: '', });
-	const [counter, setCounter] = useState(0)
+	const [income, setIncome] = useState("");
+	const [expenses, setExpenses] = useState({
+		house: "",
+		utilities: "",
+		car: "",
+		food: "",
+		leisure: "",
+		other: "",
+	});
+	const [counter, setCounter] = useState(0);
 
-	const handleChange = (e :any, category :string) => {
-		setExpenses({...expenses, [category]: e})
-	}
+	const handleChange = (e: any, category: string) => {
+		setExpenses({ ...expenses, [category]: e });
+	};
 	return (
 		<ScrollView>
 			<View style={styles.screen}>
 				<Text>{counter}</Text>
-	{counter === 0 && <View style={styles.inputContainer}>
-                    <Text style={styles.inputPrompt}>How much Income do you make in a month?</Text>
-					<Ionicons name='cash' size={42} color='green'/>
-                    <View style={styles.input}>
-					<TextInput
-					style={styles.field}
-                    placeholder=''
-                    value={income}
-					onChangeText={(text) => setIncome(text)} 
-                    />
-                    </View>
-				</View>}
-	{counter === 1 && <View style={styles.inputContainer}>
-					<Ionicons iconName={'ios-home'} size={22}/>
-                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
-                    <View style={styles.input}>
-					<TextInput
-					style={styles.field}
-                    placeholder=''
-                    value={expenses.house}
-					onChangeText={(text) => handleChange(text, 'house')} 
-                    />
-                    </View>
-				</View>}
-	{counter === 2 && <View style={styles.inputContainer}>
-					<Ionicons iconName={'ios-money'} size={22}/>
-                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
-                    <View style={styles.input}>
-					<TextInput
-					style={styles.field}
-                    placeholder=''
-                    value={expenses.utilities}
-					onChangeText={(text) => handleChange(text, 'utilities')} 
- 
-                    />
-                    </View>
-				</View>}
-	{counter === 3 && <View style={styles.inputContainer}>
-					<Ionicons iconName={'ios-money'} size={22}/>
-                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
-                    <View style={styles.input}>
-					<TextInput
-					style={styles.field}
-                    placeholder=''
-                    value={expenses.car} 
-					onChangeText={(text) => handleChange(text, 'car')} 
+				{counter === 0 && (
+					<View style={styles.inputContainer}>
+						<Ionicons name="cash" size={42} color="green" />
+						<Text style={styles.inputPrompt}>
+							How much Income do you make in a month?
+						</Text>
+						<View style={styles.input}>
+							<TextInput
+								style={styles.field}
+								placeholder=""
+								value={income}
+								onChangeText={(text) => setIncome(text)}
+							/>
+						</View>
+					</View>
+				)}
+				{counter === 1 && (
+					<View style={styles.inputContainer}>
+						<Ionicons name={"home"} size={42} color="red" />
+						<Text style={styles.inputPrompt}>
+							What is your monthly living payment? eg. rent,
+							mortgage, etc
+						</Text>
+						<View style={styles.input}>
+							<TextInput
+								style={styles.field}
+								placeholder=""
+								value={expenses.house}
+								onChangeText={(text) =>
+									handleChange(text, "house")
+								}
+							/>
+						</View>
+					</View>
+				)}
+				{counter === 2 && (
+					<View style={styles.inputContainer}>
+						<Ionicons name={"flash"} size={42} color="red" />
+						<Text style={styles.inputPrompt}>
+							How much do you spend on utilities?
+						</Text>
+						<View style={styles.input}>
+							<TextInput
+								style={styles.field}
+								placeholder=""
+								value={expenses.utilities}
+								onChangeText={(text) =>
+									handleChange(text, "utilities")
+								}
+							/>
+						</View>
+					</View>
+				)}
+				{counter === 3 && (
+					<View style={styles.inputContainer}>
+						<Ionicons name={"car"} size={42} color="red" />
+						<Text style={styles.inputPrompt}>
+							What do you spend on transportation?
+						</Text>
+						<Text style={styles.inputSubPrompt}>
+							gas, insurance, etc
+						</Text>
 
-                    />
-                    </View>
-				</View>}
-	{counter === 4 && <View style={styles.inputContainer}>
-					<Ionicons iconName={'ios-money'} size={22}/>
-                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
-                    <View style={styles.input}>
-					<TextInput
-					style={styles.field}
-                    placeholder=''
-                    value={expenses.food} 
-					onChangeText={(text) => handleChange(text, 'food')} 
+						<View style={styles.input}>
+							<TextInput
+								style={styles.field}
+								placeholder=""
+								value={expenses.car}
+								onChangeText={(text) =>
+									handleChange(text, "car")
+								}
+							/>
+						</View>
+					</View>
+				)}
+				{counter === 4 && (
+					<View style={styles.inputContainer}>
+						<Ionicons name={"fast-food"} size={42} color="red" />
+						<Text style={styles.inputPrompt}>
+							How much on food?
+						</Text>
+						<View style={styles.input}>
+							<TextInput
+								style={styles.field}
+								placeholder=""
+								value={expenses.food}
+								onChangeText={(text) =>
+									handleChange(text, "food")
+								}
+							/>
+						</View>
+					</View>
+				)}
+				{counter === 5 && (
+					<View style={styles.inputContainer}>
+						<Ionicons name={"happy"} size={42} color="red"/>
+						<Text style={styles.inputPrompt}>
+							What do you spend for fun?
+						</Text>
+						<View style={styles.input}>
+							<TextInput
+								style={styles.field}
+								placeholder=""
+								value={expenses.leisure}
+								onChangeText={(text) =>
+									handleChange(text, "leisure")
+								}
+							/>
+						</View>
+					</View>
+				)}
+				{counter === 6 && (
+					<View style={styles.inputContainer}>
+						<Ionicons name={"cart"} size={42} color="red"/>
+						<Text style={styles.inputPrompt}>
+							Put all other expenses here
+						</Text>
+						<View style={styles.input}>
+							<TextInput
+								style={styles.field}
+								placeholder=""
+								value={expenses.other}
+								onChangeText={(text) =>
+									handleChange(text, "other")
+								}
+							/>
+						</View>
+					</View>
+				)}
+				<Text style={styles.inputSubPrompt}>
+					Pro tip! you can string together numbers with a{" "}
+					<Text style={{ color: "green" }}>+</Text> or{" "}
+					<Text style={{ color: "red" }}>-</Text> and we will do the
+					math for you!
+				</Text>
 
-                    />
-                    </View>
-					
-				</View>}
-	{counter === 5 && <View style={styles.inputContainer}>
-					<Ionicons iconName={'ios-money'} size={22}/>
-                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
-                    <View style={styles.input}>
-					<TextInput
-					style={styles.field}
-                    placeholder=''
-                    value={expenses.leisure}
-					onChangeText={(text) => handleChange(text, 'leisure')} 
- 
-                    />
-                    </View>
-					
-				</View>}
-	{counter === 6 && <View style={styles.inputContainer}>
-					<Ionicons iconName={'ios-money'} size={22}/>
-                    <Text style={styles.inputPrompt}>How much Income do you make in any given month?</Text>
-                    <View style={styles.input}>
-					<TextInput
-					style={styles.field}
-                    placeholder=''
-                    value={expenses.other} 
-                    />
-                    </View>
-				</View>}
-				
 				<View style={styles.buttonContainer}>
-				{counter > 0 && <Button
-					onPress={() => {
-						setCounter(prev => prev - 1);
-					}}
-					title="Back"
-				/>}
-				{counter < 6 && <Button
-					onPress={() => {
-						setCounter(prev => prev + 1);
-					}}
-					title="Next"
-				/>}
+					{counter > 0 && (
+						<Button
+							onPress={() => {
+								setCounter((prev) => prev - 1);
+							}}
+							title="Back"
+						/>
+					)}
+					{counter < 6 && (
+						<Button
+							onPress={() => {
+								setCounter((prev) => prev + 1);
+							}}
+							title="Next"
+						/>
+					)}
 				</View>
 			</View>
 		</ScrollView>
@@ -135,16 +192,23 @@ const styles = StyleSheet.create({
 	screen: {
 		flex: 1,
 		alignItems: "center",
-		justifyContent: 'center',
+		justifyContent: "center",
 	},
-    inputContainer: {
+	inputContainer: {
 		marginVertical: 30,
-        alignItems: 'center',
-    },
-    inputPrompt: {
+		alignItems: "center",
+	},
+	inputPrompt: {
 		fontSize: 22,
-		textAlign: 'center'
-    },
+		textAlign: "center",
+		marginHorizontal: 10,
+	},
+	inputSubPrompt: {
+		fontSize: 18,
+		color: "#bbb",
+		textAlign: "center",
+		marginHorizontal: 15,
+	},
 	input: {
 		width: 300,
 		fontSize: 32,
@@ -154,12 +218,12 @@ const styles = StyleSheet.create({
 	field: {
 		fontSize: 33,
 		color: Colors.light.text,
-		textAlign: 'center',
+		textAlign: "center",
 	},
 	form: {},
 	buttonContainer: {
-		flexDirection: 'row',
-		justifyContent: 'space-evenly'
+		flexDirection: "row",
+		justifyContent: "space-evenly",
 	},
 });
 
