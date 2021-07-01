@@ -30,6 +30,14 @@ const BudgetFormScreen = (props: any) => {
 		let replacedText = text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '')
 		setIncome(replacedText);
 	};
+	const handleSubmit = () => {
+	let totalExpenses :number = 0
+	let totalIncome = parseInt(income)
+		for(let expense in expenses){
+			totalExpenses += parseInt(expense)
+		}
+		props.navigation.navigate('Results', {'income': totalIncome, 'expenses': totalExpenses})	
+	}
 	return (
 		<ScrollView>
 			<View style={styles.screen}>
@@ -185,6 +193,7 @@ const BudgetFormScreen = (props: any) => {
 							}}
 							title="Back"
 						/>
+						
 					)}
 					{counter < 6 && (
 						<Button
@@ -193,6 +202,16 @@ const BudgetFormScreen = (props: any) => {
 							}}
 							title="Next"
 						/>
+						
+					)}
+					{counter === 6 && (
+						<Button
+							onPress={() => {
+								handleSubmit()
+							}}
+							title="Submit"
+						/>
+						
 					)}
 				</View>
 			</View>
