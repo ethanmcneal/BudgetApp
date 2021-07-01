@@ -8,11 +8,13 @@ const YearlyAmounts = (props :any) => {
      // n = compounding periods
      const getTotalWithInterest = (interestRate :number, numOfYears :number) => {
         //interest rate should be passed as a percentage decimal
+        let initialAmount = props.leftover * 12
         console.log(interestRate)
         // 5% => 0.05
         let interestPercentage = (Math.pow((1 + interestRate), numOfYears) - 1);
-        let yearlyInterest =  (props.leftover * interestPercentage)
-        return ((props.leftover * 12) + (yearlyInterest * numOfYears))
+        let totalYearlyInterest =  (initialAmount * interestPercentage)
+        console.log(totalYearlyInterest)
+        return ((initialAmount) + (totalYearlyInterest))
     }
     useEffect(() => {
 
