@@ -13,7 +13,7 @@ import Colors from "../../constants/Colors";
 const BudgetFormScreen = (props: any) => {
 	const [income, setIncome] = useState("");
 	const [expenses, setExpenses] = useState({
-		house: "",
+		house: "", 
 		utilities: "",
 		car: "",
 		food: "",
@@ -30,12 +30,14 @@ const BudgetFormScreen = (props: any) => {
 		let replacedText = text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '')
 		setIncome(replacedText);
 	};
-	const handleSubmit = () => {
+	const handleSubmit = (exp :any) => {
 	let totalExpenses :number = 0
 	let totalIncome = parseInt(income)
-		for(let expense in expenses){
-			totalExpenses += parseInt(expense)
+		for(let expense in exp){
+			console.log(exp[expense])
+			totalExpenses += parseInt(exp[expense])
 		}
+		console.log(totalExpenses, totalIncome)
 		props.navigation.navigate('Results', {'income': totalIncome, 'expenses': totalExpenses})	
 	}
 	return (
@@ -55,6 +57,7 @@ const BudgetFormScreen = (props: any) => {
 								value={income}
 								onChangeText={(text) => handleIncomeChange(text)}
 								keyboardType={'numbers-and-punctuation'}
+								onSubmitEditing={() => {setCounter(prev => prev + 1)}}
 							/>
 						</View>
 					</View>
@@ -75,6 +78,8 @@ const BudgetFormScreen = (props: any) => {
 									handleChange(text, "house")
 								}
 								keyboardType={'numbers-and-punctuation'}
+								onSubmitEditing={() => {setCounter(prev => prev + 1)}}
+								autoFocus
 							/>
 						</View>
 					</View>
@@ -94,6 +99,8 @@ const BudgetFormScreen = (props: any) => {
 									handleChange(text, "utilities")
 								}
 								keyboardType={'numbers-and-punctuation'}
+								onSubmitEditing={() => {setCounter(prev => prev + 1)}}
+								autoFocus
 							/>
 						</View>
 					</View>
@@ -117,6 +124,8 @@ const BudgetFormScreen = (props: any) => {
 									handleChange(text, "car")
 								}
 								keyboardType={'numbers-and-punctuation'}
+								onSubmitEditing={() => {setCounter(prev => prev + 1)}}
+								autoFocus
 							/>
 						</View>
 					</View>
@@ -136,6 +145,8 @@ const BudgetFormScreen = (props: any) => {
 									handleChange(text, "food")
 								}
 								keyboardType={'numbers-and-punctuation'}
+								onSubmitEditing={() => {setCounter(prev => prev + 1)}}
+								autoFocus
 							/>
 						</View>
 					</View>
@@ -155,6 +166,8 @@ const BudgetFormScreen = (props: any) => {
 									handleChange(text, "leisure")
 								}
 								keyboardType={'numbers-and-punctuation'}
+								onSubmitEditing={() => {setCounter(prev => prev + 1)}}
+								autoFocus
 							/>
 						</View>
 					</View>
@@ -174,6 +187,7 @@ const BudgetFormScreen = (props: any) => {
 									handleChange(text, "other")
 								}
 								keyboardType={'numbers-and-punctuation'}
+								autoFocus
 							/>
 						</View>
 					</View>
@@ -207,7 +221,7 @@ const BudgetFormScreen = (props: any) => {
 					{counter === 6 && (
 						<Button
 							onPress={() => {
-								handleSubmit()
+								handleSubmit(expenses)
 							}}
 							title="Submit"
 						/>

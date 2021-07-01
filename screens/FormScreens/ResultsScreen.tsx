@@ -5,8 +5,8 @@ import CenterView from '../../components/myComponents/CenterView'
 
 const ResultsScreen = (props :any) => {
 
-    const totalExpenses = props.props.navigation.getParam('expenses')
-    const totalIncome = props.props.navigation.getParam('income')
+    const totalExpenses = props.navigation.getParam('expenses')
+    const totalIncome = props.navigation.getParam('income')
     return (
         <CenterView>
             <Text>{totalExpenses}</Text>
