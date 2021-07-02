@@ -34,7 +34,6 @@ const BudgetFormScreen = (props: any) => {
 	let totalExpenses :number = 0
 	let totalIncome = parseInt(income)
 		for(let expense in exp){
-			console.log(exp[expense])
 			totalExpenses += parseInt(exp[expense])
 		}
 		console.log(totalExpenses, totalIncome)

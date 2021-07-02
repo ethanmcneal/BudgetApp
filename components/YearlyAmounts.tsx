@@ -9,7 +9,6 @@ const YearlyAmounts = (props :any) => {
      const getTotalWithInterest = (interestRate :number, numOfYears :number) => {
         //interest rate should be passed as a percentage decimal
         let initialAmount = props.leftover * 12
-        console.log(interestRate)
         // 5% => 0.05
         let interestPercentage = (Math.pow((1 + interestRate), numOfYears) - 1);
         let totalYearlyInterest =  (initialAmount * interestPercentage)
