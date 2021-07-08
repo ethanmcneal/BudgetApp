@@ -29,19 +29,19 @@ const YearlyAmounts = (props: any) => {
 	return (
 		<View style={styles.resultsContainer}>
 			<View style={styles.resultCard}>
-            <Text>1 Year: </Text><Text>${yearlyAmounts.oneYear.toFixed(2)}</Text>
+            <Text>1 Year: </Text><Text style={{...styles.amount, fontSize: 16}}>${yearlyAmounts.oneYear.toFixed(2)}</Text>
             </View>
 			<View style={styles.resultCard}>
-            <Text>2 Years:</Text><Text>${yearlyAmounts.twoYears.toFixed(2)}</Text>		
+            <Text>2 Years:</Text><Text style={{...styles.amount, fontSize: 18}}>${yearlyAmounts.twoYears.toFixed(2)}</Text>		
             </View>
 			<View style={styles.resultCard}>
-            <Text>5 Years: </Text><Text>${yearlyAmounts.fiveYears.toFixed(2)}</Text>		
+            <Text>5 Years: </Text><Text style={{...styles.amount, fontSize: 20}}>${yearlyAmounts.fiveYears.toFixed(2)}</Text>		
             </View>
 			<View style={styles.resultCard}>
-            <Text>10 Years:</Text><Text>${yearlyAmounts.tenYears.toFixed(2)}</Text>		
+            <Text>10 Years:</Text><Text style={{...styles.amount, fontSize: 22}}>${yearlyAmounts.tenYears.toFixed(2)}</Text>		
             </View>
 			<View style={styles.resultCard}>
-				<Text>20 Years:</Text><Text>${yearlyAmounts.twentyYears.toFixed(2)}</Text>
+			<Text>20 Years:</Text><Text style={{...styles.amount, fontSize: 24}}>${yearlyAmounts.twentyYears.toFixed(2)}</Text>
 			</View>
 		</View>
 	);
@@ -51,16 +51,21 @@ const styles = StyleSheet.create({
     resultsContainer: {
         width: '80%'
     },
-    resultCard: {
+    resultCard: { 
         width: '100%',
         borderWidth: 2,
         padding: 15,
-        borderColor: 'green',
+        borderColor: '#ccc',
         borderRadius: 8,
         marginVertical: 10,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#f9e4b7',
 
+    },
+    amount: {
+        color: 'green'
     },
 })
 
