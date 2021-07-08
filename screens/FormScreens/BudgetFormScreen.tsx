@@ -8,6 +8,7 @@ import {
 	TextInput,
 	View,
 } from "react-native";
+import InputErrorMessage from "../../components/InputErrorMessage";
 import Colors from "../../constants/Colors";
 
 const BudgetFormScreen = (props: any) => {
@@ -62,7 +63,7 @@ const BudgetFormScreen = (props: any) => {
 		<ScrollView>
 			<View style={styles.screen}>
 				<Text>{counter}</Text>
-				{/* {counter === -1 && } */}
+				{counter === -1 && <InputErrorMessage />}
 				{counter === 0 && (
 					<View style={styles.inputContainer}>
 						<Ionicons name="cash" size={42} color="green" />
