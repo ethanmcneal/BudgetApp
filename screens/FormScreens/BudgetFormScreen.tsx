@@ -12,6 +12,7 @@ import Colors from "../../constants/Colors";
 
 const BudgetFormScreen = (props: any) => {
 	const [income, setIncome] = useState("");
+	const [alert, setAlert] = useState(true)
 	const [expenses, setExpenses] = useState({
 		house: "", 
 		utilities: "",
@@ -24,6 +25,9 @@ const BudgetFormScreen = (props: any) => {
 
 	const handleChange = (text: any, category: string) => {
 		let replacedText = text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '')
+		if(parseInt(replacedText) === NaN){
+			setAlert(true)
+		}
 		setExpenses({ ...expenses, [category]: replacedText });
 	};
 	const handleIncomeChange = (text: any) => {
@@ -34,7 +38,9 @@ const BudgetFormScreen = (props: any) => {
 	let totalExpenses :number = 0
 	let totalIncome = parseInt(income)
 		for(let expense in exp){
+			if (parseInt(exp[expense]) !== NaN){
 			totalExpenses += parseInt(exp[expense])
+		}
 		}
 		console.log(totalExpenses, totalIncome)
 		props.navigation.navigate('Results', {'income': totalIncome, 'expenses': totalExpenses})	
