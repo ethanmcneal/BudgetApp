@@ -13,7 +13,7 @@ const ResultsScreen = (props :any) => {
         <ScrollView style={styles.screen}>
         <View style={styles.container}>
             <Text style={styles.resultsText}>You will have <Text style={styles.moneyText}>${leftover}</Text> leftover each month</Text>
-            <Text style={styles.resultsText}>if you save {leftover} for one year and
+            <Text style={styles.resultsText}>if you save <Text style={styles.moneyText}>${leftover}</Text> for one year and
                 invest that at <View style={styles.input}>
                     <TextInput
                     keyboardType='numeric'
@@ -21,16 +21,17 @@ const ResultsScreen = (props :any) => {
                     onChangeText={(text) => setInterest(text)} 
                 /><Text>%</Text>
                 </View> interest each compounded annually</Text>
-                <YearlyAmounts leftover={leftover} interest={interest} />
                 {/* <Button title='Calculate!' onPress={() => YearlyAmounts(interest)}/> */}
         </View>
+                <YearlyAmounts leftover={leftover} interest={interest} />
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     screen:{
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        
     },
     container: {
         alignItems: 'center',
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: 'green',
         width: 20,
+        fontSize: 19,
         alignItems: 'center',
         justifyContent: 'center',
     }
