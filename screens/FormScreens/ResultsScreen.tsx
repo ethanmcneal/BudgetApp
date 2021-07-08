@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     screen: {
         alignItems: 'center',
         marginVertical: 20,
+        backgroundColor: 'white',
     },
     input: {
         flexDirection: 'row',

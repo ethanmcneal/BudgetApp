@@ -19,7 +19,8 @@ const InputErrorMessage = (props :any) => {
 const styles = StyleSheet.create({
     errorContainer: {
         width: '80%',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginVertical: 20,
     },
     errorMessage: {
 		fontSize: 18,

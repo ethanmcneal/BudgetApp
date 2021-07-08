@@ -60,9 +60,8 @@ const BudgetFormScreen = (props: any) => {
 	}	
 	}
 	return (
-		<ScrollView>
+		<ScrollView style={styles.formContainer}>
 			<View style={styles.screen}>
-				<Text>{counter}</Text>
 				{counter === -1 && <InputErrorMessage />}
 				{counter === 0 && (
 					<View style={styles.inputContainer}>
@@ -263,8 +262,12 @@ const BudgetFormScreen = (props: any) => {
 };
 
 const styles = StyleSheet.create({
+	formContainer: {
+		backgroundColor: 'white'
+	},
 	screen: {
 		flex: 1,
+		backgroundColor: 'white',
 		alignItems: "center",
 		justifyContent: "center",
 	},
