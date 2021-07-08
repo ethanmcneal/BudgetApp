@@ -12,7 +12,7 @@ import Colors from "../../constants/Colors";
 
 const BudgetFormScreen = (props: any) => {
 	const [income, setIncome] = useState("");
-	const [alert, setAlert] = useState(true)
+	const [alert, setAlert] = useState(false)
 	const [expenses, setExpenses] = useState({
 		house: "", 
 		utilities: "",
@@ -24,15 +24,22 @@ const BudgetFormScreen = (props: any) => {
 	const [counter, setCounter] = useState(0);
 
 	const handleChange = (text: any, category: string) => {
-		let replacedText = text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '')
-		if(parseInt(replacedText) === NaN){
+		if(isNaN(text)){
 			setAlert(true)
+		} else {
+			setAlert(false)
+			setExpenses({ ...expenses, [category]: text })
 		}
-		setExpenses({ ...expenses, [category]: replacedText });
+		;
 	};
 	const handleIncomeChange = (text: any) => {
-		let replacedText = text.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '')
-		setIncome(replacedText);
+		if(isNaN(text)){
+			setAlert(true)
+		} else {
+			setAlert(false)
+			setIncome(text)
+		}
+		;
 	};
 	const handleSubmit = (exp :any) => {
 	let totalExpenses :number = 0
@@ -197,12 +204,9 @@ const BudgetFormScreen = (props: any) => {
 						</View>
 					</View>
 				)}
-				<Text style={styles.inputSubPrompt}>
-					Pro tip! you can string together numbers with a{" "}
-					<Text style={{ color: "green" }}>+</Text> or{" "}
-					<Text style={{ color: "red" }}>-</Text> and we will do the
-					math for you!
-				</Text>
+				{alert && <Text style={styles.inputAlertPrompt}>
+					Not a Number! please enter a number
+				</Text>}
 
 				<View style={styles.buttonContainer}>
 					{counter > 0 && (
@@ -259,6 +263,12 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		marginHorizontal: 15,
 	},
+	inputAlertPrompt: {
+		fontSize: 18,
+		color: "rgba(251, 18, 18, 0.62)",
+		textAlign: "center",
+		marginHorizontal: 15,
+	},
 	input: {
 		width: 300,
 		fontSize: 32,
@@ -270,7 +280,6 @@ const styles = StyleSheet.create({
 		color: Colors.light.text,
 		textAlign: "center",
 	},
-	form: {},
 	buttonContainer: {
 		flexDirection: "row",
 		justifyContent: "space-evenly",
