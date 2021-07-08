@@ -10,10 +10,10 @@ const ResultsScreen = (props :any) => {
     const leftover = totalIncome - totalExpenses
     const [interest, setInterest] = useState('6')
     return (
-        <ScrollView>
-        <View style={styles.screen}>
-            <Text>You will have {leftover} leftover each month</Text>
-            <Text>if you save {leftover} for one year and
+        <ScrollView style={styles.screen}>
+        <View style={styles.container}>
+            <Text style={styles.resultsText}>You will have <Text style={styles.moneyText}>${leftover}</Text> leftover each month</Text>
+            <Text style={styles.resultsText}>if you save {leftover} for one year and
                 invest that at <View style={styles.input}>
                     <TextInput
                     keyboardType='numeric'
@@ -29,10 +29,20 @@ const ResultsScreen = (props :any) => {
 }
 
 const styles = StyleSheet.create({
-    screen: {
+    screen:{
+        backgroundColor: 'white'
+    },
+    container: {
         alignItems: 'center',
         marginVertical: 20,
-        backgroundColor: 'white',
+        },
+    resultsText: {
+        fontSize: 18,
+        textAlign: 'center',
+    },
+    moneyText: {
+        color: 'green',
+        fontSize: 19,
     },
     input: {
         flexDirection: 'row',
