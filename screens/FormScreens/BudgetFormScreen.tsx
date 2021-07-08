@@ -13,14 +13,14 @@ import Colors from "../../constants/Colors";
 const BudgetFormScreen = (props: any) => {
 	const [income, setIncome] = useState("");
 	const [alert, setAlert] = useState(false)
-	const [expenses, setExpenses] = useState({
+	const defaultExpenseState = {
 		house: "", 
 		utilities: "",
 		car: "",
 		food: "",
 		leisure: "",
-		other: "",
-	});
+		other: ""}
+	const [expenses, setExpenses] = useState(defaultExpenseState);
 	const [counter, setCounter] = useState(0);
 
 	const handleChange = (text: any, category: string) => {
@@ -43,19 +43,26 @@ const BudgetFormScreen = (props: any) => {
 	};
 	const handleSubmit = (exp :any) => {
 	let totalExpenses :number = 0
-	let totalIncome = parseInt(income)
+	let totalIncome = isNaN(parseInt(income)) ? 0 : parseInt(income)
 		for(let expense in exp){
-			if (parseInt(exp[expense]) !== NaN){
+			if(!isNaN(exp[expense])){
 			totalExpenses += parseInt(exp[expense])
 		}
 		}
+		if(isNaN(totalExpenses) || isNaN(totalIncome)){
+			setCounter(-1)
+			setExpenses(defaultExpenseState)
+			setIncome('')
+		} else {
 		console.log(totalExpenses, totalIncome)
-		props.navigation.navigate('Results', {'income': totalIncome, 'expenses': totalExpenses})	
+		props.navigation.navigate('Results', {'income': totalIncome, 'expenses': totalExpenses})
+	}	
 	}
 	return (
 		<ScrollView>
 			<View style={styles.screen}>
 				<Text>{counter}</Text>
+				{/* {counter === -1 && } */}
 				{counter === 0 && (
 					<View style={styles.inputContainer}>
 						<Ionicons name="cash" size={42} color="green" />
@@ -78,8 +85,11 @@ const BudgetFormScreen = (props: any) => {
 					<View style={styles.inputContainer}>
 						<Ionicons name={"home"} size={42} color="red" />
 						<Text style={styles.inputPrompt}>
-							What is your monthly living payment? eg. rent,
-							mortgage, etc
+							What is your monthly living payment? 
+							
+						</Text>
+						<Text style={styles.inputSubPrompt}>
+							eg. rent,mortgage, etc
 						</Text>
 						<View style={styles.input}>
 							<TextInput
@@ -101,6 +111,9 @@ const BudgetFormScreen = (props: any) => {
 						<Ionicons name={"flash"} size={42} color="red" />
 						<Text style={styles.inputPrompt}>
 							How much do you spend on utilities?
+						</Text>
+						<Text style={styles.inputSubPrompt}>
+							water, electricity...
 						</Text>
 						<View style={styles.input}>
 							<TextInput
@@ -148,6 +161,9 @@ const BudgetFormScreen = (props: any) => {
 						<Text style={styles.inputPrompt}>
 							How much on food?
 						</Text>
+						<Text style={styles.inputSubPrompt}>
+							The average cost of groceries each month for one person ranges between $165 and $345
+						</Text>
 						<View style={styles.input}>
 							<TextInput
 								style={styles.field}
@@ -189,6 +205,9 @@ const BudgetFormScreen = (props: any) => {
 						<Ionicons name={"cart"} size={42} color="red"/>
 						<Text style={styles.inputPrompt}>
 							Put all other expenses here
+						</Text>
+						<Text style={styles.inputSubPrompt}>
+							e.g. Student Load payments, or anything else we missed!
 						</Text>
 						<View style={styles.input}>
 							<TextInput
