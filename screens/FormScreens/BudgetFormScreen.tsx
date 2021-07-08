@@ -22,7 +22,7 @@ const BudgetFormScreen = (props: any) => {
 		leisure: "",
 		other: ""}
 	const [expenses, setExpenses] = useState(defaultExpenseState);
-	const [counter, setCounter] = useState(0);
+	const [counter, setCounter] = useState(-1);
 
 	const handleChange = (text: any, category: string) => {
 		if(isNaN(text)){
