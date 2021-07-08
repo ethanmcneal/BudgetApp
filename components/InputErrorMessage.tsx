@@ -1,10 +1,10 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 const InputErrorMessage = (props :any) => {
     return(
-        <View>
-            <Text>
+        <View style={styles.errorContainer}>
+            <Text style={styles.errorMessage}>
                 We are sorry! something went wrong with submitting the form, 
                 this usually happens if an input is not a number
             </Text>
@@ -12,5 +12,18 @@ const InputErrorMessage = (props :any) => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    errorContainer: {
+        width: '80%',
+        alignItems: 'center'
+    },
+    errorMessage: {
+		fontSize: 18,
+		color: "rgba(251, 18, 18, 0.62)",
+		textAlign: "center",
+		marginHorizontal: 15,
+	}
+})
 
 export default InputErrorMessage
