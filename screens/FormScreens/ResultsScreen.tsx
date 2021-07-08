@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
-import CenterView from '../../components/myComponents/CenterView'
+import React, { useState } from 'react'
+import { StyleSheet, Text, TextInput, View, Button, ScrollView } from 'react-native'
 import YearlyAmounts from '../../components/YearlyAmounts'
 
 
@@ -11,9 +10,8 @@ const ResultsScreen = (props :any) => {
     const leftover = totalIncome - totalExpenses
     const [interest, setInterest] = useState('6')
     return (
-        <CenterView>
-            <Text>{totalExpenses}</Text>
-            <Text>{totalIncome}</Text>
+        <ScrollView>
+        <View style={styles.screen}>
             <Text>You will have {leftover} leftover each month</Text>
             <Text>if you save {leftover} for one year and
                 invest that at <View style={styles.input}>
@@ -25,11 +23,16 @@ const ResultsScreen = (props :any) => {
                 </View> interest each compounded annually</Text>
                 <YearlyAmounts leftover={leftover} interest={interest} />
                 {/* <Button title='Calculate!' onPress={() => YearlyAmounts(interest)}/> */}
-        </CenterView>
+        </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
+    screen: {
+        alignItems: 'center',
+        marginVertical: 20,
+    },
     input: {
         flexDirection: 'row',
         borderBottomWidth: 1,
